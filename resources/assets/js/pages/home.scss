@@ -1,0 +1,29 @@
+.mint-header {
+  background-color: rgb(27, 29, 33);
+}
+ol, ul {
+  list-style: none outside none;
+}
+dd, dl, li, ol, ul {
+  margin: 0;
+  padding: 0;
+}
+.page-lazyload {
+  margin-top: 10px;
+}
+.page-lazyload-list {
+  text-align: center;
+}
+.page-lazyload-listitem {
+  width: 300px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  background-color: #ddd;
+}
+.page-lazyload-image {
+  display: block;
+  width: 100%;
+}
+img {
+  border-style: none;
+}

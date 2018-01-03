@@ -8,12 +8,16 @@ export default {
 
     },
     created : function () {
-        this.getAlbum();
+        //this.getAlbum();
     },
     data() {
         return {
             limit: 10,
-            list:{},
+            list:[
+                {"src":'/images/1.jpg','url':'/test'},
+                {"src":'/images/2.jpg'},
+                {"src":'/images/3.jpg'},
+            ],
         }
     },
     components: {
