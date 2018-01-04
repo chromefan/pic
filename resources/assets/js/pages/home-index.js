@@ -8,16 +8,13 @@ export default {
 
     },
     created : function () {
-        //this.getAlbum();
+        this.getAlbum();
     },
     data() {
         return {
             limit: 10,
-            list:[
-                {"src":'/images/1.jpg','url':'/test'},
-                {"src":'/images/2.jpg'},
-                {"src":'/images/3.jpg'},
-            ],
+            list:[],
+            allLoaded: false
         }
     },
     components: {
@@ -31,6 +28,16 @@ export default {
                 self.list = res.data;
             });
         },
+        loadTop() {
+        // 加载更多数据
+            this.$refs.loadmore.onTopLoaded();
+        },
+        loadBottom() {
+        // 加载更多数据
+            this.allLoaded = true;// 若数据已全部获取完毕
+            this.$refs.loadmore.onBottomLoaded();
+        },
+
 
     }
 }

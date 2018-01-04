@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "mint-ui": "^2.2.13",
+        "vue-carbon": "^0.5.2",
         "vue-router": "^3.0.1"
     }
 }
