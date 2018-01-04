@@ -5,6 +5,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import './bootstrap';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import MintUI from 'mint-ui'
