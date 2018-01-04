@@ -18,6 +18,6 @@
             <app></app>
         </app>
     </body>
-    <script src="{{ asset(mix('js/app.js')).'?v='.env('version') }}"></script>
+    <script src="{{ asset(mix('js/app.js')) }}"></script>
 
 </html>
