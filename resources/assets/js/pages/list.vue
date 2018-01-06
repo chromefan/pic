@@ -8,7 +8,7 @@
             <v-flex xs12 sm6 offset-sm3>
                 <v-container fluid grid-list-md class="grey lighten-4">
                     <v-carousel hide-controls>
-                        <v-carousel-item v-for="(item,i) in news" v-bind:src="item.src" :key="i"></v-carousel-item>
+                        <v-carousel-item v-for="(item,i) in news" v-lazy="item.src" :key="i"></v-carousel-item>
                     </v-carousel>
                     <v-layout  v-for="(cate,i) in albums" :key="i" row wrap >
                         <v-subheader>{{cate.cate_name}}</v-subheader>

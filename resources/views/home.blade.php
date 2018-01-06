@@ -12,7 +12,7 @@
             'appName' => config('app.name', 'Laravel')
         ]) !!};
         </script>
-        <link href='/css/fonts.css' rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
     </head>
     <body>
         <app id="app">
