@@ -14,7 +14,6 @@
         </script>
         <link href='/css/fonts.css' rel="stylesheet">
     </head>
-
     <body>
         <app id="app">
             <app></app>
