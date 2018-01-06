@@ -24,6 +24,7 @@
                 </v-card>
             </v-flex>
         </v-layout>
+
     </v-content>
 </template>
 <script src="./view-index.js"></script>
