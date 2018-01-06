@@ -16,7 +16,8 @@ export default {
         return {
             albums:[],
             news: [],
-            cate:[]
+            cate:[],
+            drawer: false
         }
     },
     components: {

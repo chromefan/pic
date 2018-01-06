@@ -44,7 +44,7 @@
             'app-header': require('./AppHeader.vue'),
         },
         data: () => ({
-            drawer: null
+            drawer: false
         }),
         props: {
             source: String
