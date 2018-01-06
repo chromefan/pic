@@ -6,7 +6,7 @@
                         app
                 >
                         <v-list dense>
-                                <v-list-tile @click="">
+                                <v-list-tile @click="go('home')">
                                         <v-list-tile-action>
                                                 <v-icon>home</v-icon>
                                         </v-list-tile-action>
@@ -14,23 +14,17 @@
                                                 <v-list-tile-title>Home</v-list-tile-title>
                                         </v-list-tile-content>
                                 </v-list-tile>
-                                <v-list-tile @click="">
+                                <v-list-tile @click="go('/')">
                                         <v-list-tile-action>
-                                                <v-icon>contact_mail</v-icon>
+                                                <v-icon>sex</v-icon>
                                         </v-list-tile-action>
                                         <v-list-tile-content>
-                                                <v-list-tile-title>Contact</v-list-tile-title>
+                                                <v-list-tile-title>性感</v-list-tile-title>
                                         </v-list-tile-content>
                                 </v-list-tile>
                         </v-list>
                 </v-navigation-drawer>
-                <v-toolbar color="pink" dark fixed app>
-                        <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-                        <v-toolbar-title>SexMM</v-toolbar-title>
-                </v-toolbar>
-                <v-content>
-                        <router-view></router-view>
-                </v-content>
+                <router-view></router-view>
                 <v-footer color="pink" app>
                         <v-spacer></v-spacer>
                         <span class="white--text">&copy; 2017</span>
@@ -54,6 +48,12 @@
         }),
         props: {
             source: String
+        },
+        methods: {
+                go: function (url,params) {
+                    const router = this.$router;
+                    router.go({path:url,params:params});
+                }
         }
     }
 </script>

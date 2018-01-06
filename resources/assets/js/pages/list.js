@@ -39,6 +39,7 @@ export default {
             window.axios.get('/api/cate').then(function (res){
                 self.cate = res.data;
             });
-        }
+        },
+
     }
 }

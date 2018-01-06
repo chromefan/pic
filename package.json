@@ -19,10 +19,10 @@
         "less": "^2.7.3",
         "less-loader": "^4.0.5",
         "lodash": "^4.17.4",
-        "vue": "^2.5.7"
+        "vue": "^2.5.7",
+        "vue-lazyload": "^1.1.4"
     },
     "dependencies": {
-        "vue-cli": "^2.9.2",
         "vue-router": "^3.0.1",
         "vuetify": "^0.17.6"
     }

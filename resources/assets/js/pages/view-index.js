@@ -12,20 +12,7 @@ export default {
     },
     data() {
         return {
-            cards:[
-                {
-                    src: '/images/1.jpg',
-                    title:'sd'
-                },
-                {
-                    src: '/images/2.jpg',
-                    title:'sd'
-                },
-                {
-                    src: '/images/3.jpg',
-                    title:'sd'
-                },
-            ],
+            cards:[],
         }
     },
     components: {
@@ -37,6 +24,9 @@ export default {
             window.axios.get('/api/photos/'+album_id).then(function (res){
                 self.cards = res.data;
             });
+        },
+        go: function (url) {
+            window.location.href = '/#/'+url;
         }
     }
 }
