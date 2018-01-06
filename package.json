@@ -16,12 +16,14 @@
         "cross-env": "^5.1",
         "jquery": "^3.2",
         "laravel-mix": "^1.0",
+        "less": "^2.7.3",
+        "less-loader": "^4.0.5",
         "lodash": "^4.17.4",
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "mint-ui": "^2.2.13",
-        "vue-carbon": "^0.5.2",
-        "vue-router": "^3.0.1"
+        "vue-cli": "^2.9.2",
+        "vue-router": "^3.0.1",
+        "vuetify": "^0.17.6"
     }
 }

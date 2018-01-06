@@ -8,14 +8,17 @@
 import './bootstrap';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import MintUI from 'mint-ui'
-import 'mint-ui/lib/style.css'
 import AppComponent from './components/App.vue';
 import router from './pages/routes';
+import Vuetify from 'vuetify';
+import 'vuetify/dist/vuetify.min.css'; // 加载css文件
 
-
+Vue.use(Vuetify);
 Vue.use(VueRouter);
-Vue.use(MintUI);
+
+
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

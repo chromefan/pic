@@ -16,4 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('cate', 'ApiController@getCategory');
 Route::get('album', 'ApiController@getAlbum');
+Route::get('newPhotos', 'ApiController@getNewPhotos');
+Route::get('photos/{album_id}', 'ApiController@getPhotos');

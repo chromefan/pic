@@ -8,10 +8,33 @@ use Illuminate\Support\Facades\DB;
 class ApiController extends Controller
 {
     //
+    protected $page = 20;
 
+    public function getCategory(){
+        $table ='category';
+        $data = DB::table($table)->get();
+        return $data;
+    }
     public function getAlbum(Request $request){
         $table ='album';
-        $data = DB::table($table)->get();
+        $cates = DB::table($table)->get();
+        $res = [];
+        foreach ($cates as $cate){
+            $res['cate_name'] = $cate->cate_name;
+            $res['cate_key'] = $cate->cate_key;
+            $res['cate_id'] = $cate->id;
+            $res['albums'] = DB::table($table)->where('cate_id',$cate->id)->get();
+        }
+        return $res;
+    }
+    public function getNewPhotos(){
+        $table ='photos';
+        $data = DB::table($table)->orderBy('id','desc')->limit(4)->get();
+        return $data;
+    }
+    public function getPhotos(Request $request,$album_id){
+        $table ='photos';
+        $data = DB::table($table)->where('album_id',$album_id)->get();
         return $data;
     }
 }
