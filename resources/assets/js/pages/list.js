@@ -8,7 +8,9 @@ export default {
         console.log('tools页面 mounted.');
     },
     created : function () {
-        //this.getData();
+        this.getData();
+        this.getNewPhotos();
+        this.getCategory();
     },
     data() {
         return {
@@ -21,18 +23,21 @@ export default {
     },
     methods: {
         getData: function(){
-            window.axios.get('/api/photos').then(function (res){
-                this.albums = res.data;
+            var  self = this;
+            window.axios.get('/api/album').then(function (res){
+                self.albums = res.data;
             });
         },
         getNewPhotos: function(){
+            var  self = this;
             window.axios.get('/api/newPhotos').then(function (res){
-                this.news = res.data;
+                self.news = res.data;
             });
         },
         getCategory: function(){
+            var  self = this;
             window.axios.get('/api/cate').then(function (res){
-                this.cate = res.data;
+                self.cate = res.data;
             });
         }
     }

@@ -1,14 +1,13 @@
 /**
  * Created by luohuanjun on 2017/6/9.
  */
-import slider from 'vue-concise-slider'// import slider components
 export default {
 
     mounted() {
         console.log('tools页面 mounted.');
     },
     created : function () {
-        //this.getData();
+        this.getData();
 
     },
     data() {
@@ -32,10 +31,11 @@ export default {
     components: {
     },
     methods: {
-        getData: function(page){
+        getData: function(){
             var self = this;
-            window.axios.get('/api/photos?page='+page).then(function (res){
-                //self.items = self.items.concat(res.data.data);
+            var album_id = self.$route.params.album_id;
+            window.axios.get('/api/photos/'+album_id).then(function (res){
+                self.cards = res.data;
             });
         }
     }
