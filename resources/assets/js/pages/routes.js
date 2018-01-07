@@ -13,7 +13,7 @@ const routes = [
                 {
                     name: '首页',
 
-                    href: '/index'
+                    href: '/'
                 }
             ]
         }
@@ -26,7 +26,7 @@ const routes = [
             breadcrumb: [
                 {
                     name: '图片详情',
-                    href: '/view'
+                    href: '/view/:album_id'
                 }
             ]
         }
@@ -47,6 +47,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
+    history: false,
     routes
 });
 

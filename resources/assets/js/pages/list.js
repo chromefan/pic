@@ -8,8 +8,8 @@ export default {
         console.log('tools页面 mounted.');
     },
     created : function () {
-        this.getData();
         this.getNewPhotos();
+        this.getData();
         this.getCategory();
     },
     data() {

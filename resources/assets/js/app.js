@@ -12,10 +12,10 @@ import AppComponent from './components/App.vue';
 import router from './pages/routes';
 import Vuetify from 'vuetify';
 import 'vuetify/dist/vuetify.min.css'; // 加载css文件
-import VueLazyLoad from 'vue-lazyload'
+import VueLazyLoad from 'vue-lazyload';
 
-Vue.use(Vuetify);
 Vue.use(VueRouter);
+Vue.use(Vuetify);
 Vue.use(VueLazyLoad);
 
 

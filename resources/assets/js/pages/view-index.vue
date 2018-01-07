@@ -2,7 +2,7 @@
 <template>
     <v-content>
         <v-toolbar color="pink" dark fixed app>
-            <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+            <v-toolbar-side-icon ></v-toolbar-side-icon>
             <v-toolbar-title>SexMM</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn color="pink" @click="go('list')">
@@ -24,7 +24,18 @@
                 </v-card>
             </v-flex>
         </v-layout>
-
+        <v-layout  row wrap >
+            <v-subheader><h3>相关推荐</h3></v-subheader>
+            <v-container fluid grid-list-sm>
+                <v-layout row wrap>
+                    <v-flex xs4 v-for="(album ,j) in relates" :key="j">
+                        <a  @click="go('/view/'+album.id)">
+                            <img class="image" v-lazy="album.src" v-bind:title="album.title" v-bind:alt="album.title" width="100%" height="100%">
+                        </a>
+                    </v-flex>
+                </v-layout>
+            </v-container>
+        </v-layout>
     </v-content>
 </template>
 <script src="./view-index.js"></script>

@@ -23,7 +23,7 @@ class ApiController extends Controller
             $res[$k]['cate_name'] = $cate->cate_name;
             $res[$k]['cate_key'] = $cate->cate_key;
             $res[$k]['cate_id'] = $cate->id;
-            $res[$k]['albums'] = DB::table($table)->where('cate_id',$cate->id)->get();
+            $res[$k]['albums'] = DB::table($table)->where('cate_id',$cate->id)->orderBy('id','desc')->get();
         }
         return $res;
     }
@@ -35,6 +35,11 @@ class ApiController extends Controller
     public function getPhotos(Request $request,$album_id){
         $table ='photos';
         $data = DB::table($table)->where('album_id',$album_id)->get();
+        return $data;
+    }
+    public function getRelatePhotos($album_id){
+        $table ='album';
+        $data = DB::table($table)->where('id','<>',$album_id)->orderByRaw('RAND()')->limit(6)->get();
         return $data;
     }
 }
