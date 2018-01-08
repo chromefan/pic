@@ -23,7 +23,7 @@ class ApiController extends Controller
             $res[$k]['cate_name'] = $cate->cate_name;
             $res[$k]['cate_key'] = $cate->cate_key;
             $res[$k]['cate_id'] = $cate->id;
-            $res[$k]['albums'] = DB::table($table)->where('cate_id',$cate->id)->orderBy('id','desc')->get();
+            $res[$k]['albums'] = DB::table($table)->where('cate_id',$cate->id)->orderBy('id','desc')->limit(24)->get();
         }
         return $res;
     }
