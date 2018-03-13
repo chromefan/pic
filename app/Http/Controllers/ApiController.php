@@ -23,23 +23,34 @@ class ApiController extends Controller
             $res[$k]['cate_name'] = $cate->cate_name;
             $res[$k]['cate_key'] = $cate->cate_key;
             $res[$k]['cate_id'] = $cate->id;
-            $res[$k]['albums'] = DB::table($table)->where('cate_id',$cate->id)->orderBy('id','desc')->limit(24)->get();
+            $albums = DB::table($table)->where('cate_id',$cate->id)->orderBy('id','desc')->limit(24)->get();
+            $res[$k]['albums'] = $this->_set_src($albums);
         }
         return $res;
     }
     public function getNewPhotos(){
         $table ='photos';
         $data = DB::table($table)->orderBy('id','desc')->limit(4)->get();
+        $data = $this->_set_src($data);
         return $data;
     }
     public function getPhotos(Request $request,$album_id){
         $table ='photos';
         $data = DB::table($table)->where('album_id',$album_id)->get();
+        $data = $this->_set_src($data);
         return $data;
     }
     public function getRelatePhotos($album_id){
         $table ='album';
         $data = DB::table($table)->where('id','<>',$album_id)->orderByRaw('RAND()')->limit(6)->get();
+        $data = $this->_set_src($data);
+        return $data;
+    }
+    private function _set_src($data){
+
+        foreach ($data as $k=>$v){
+            $data[$k]->src = asset(public_path('images').'/'.$v->path);
+        }
         return $data;
     }
 }
