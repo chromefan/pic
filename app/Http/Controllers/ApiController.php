@@ -49,7 +49,7 @@ class ApiController extends Controller
     private function _set_src($data){
 
         foreach ($data as $k=>$v){
-            $data[$k]->src = asset(public_path('images').'/'.$v->path);
+            $data[$k]->src = asset('images/'.$v->path);
         }
         return $data;
     }
