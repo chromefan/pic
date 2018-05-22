@@ -4,9 +4,7 @@
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
             <v-toolbar-title>SexMM</v-toolbar-title>
         </v-toolbar>
-        <v-carousel hide-controls lazy>
-            <v-carousel-item v-for="(item,i) in news" v-bind:src="item.src" :key="i"></v-carousel-item>
-        </v-carousel>
+
         <v-layout column>
             <v-flex xs12 sm6 offset-sm3>
                 <v-container fluid grid-list-md class="grey lighten-4">
