@@ -42,7 +42,7 @@ class ApiController extends Controller
     }
     public function getRelatePhotos($album_id){
         $table ='album';
-        $data = DB::table($table)->where('id','<>',$album_id)->orderByRaw('RAND()')->limit(6)->get();
+        $data = DB::table($table)->where('id','<>',$album_id)->orderByRaw('RAND()')->limit(9)->get();
         $data = $this->_set_src($data);
         return $data;
     }
