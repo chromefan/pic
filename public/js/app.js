@@ -46829,14 +46829,6 @@ var render = function() {
       ),
       _vm._v(" "),
       _c(
-        "v-carousel",
-        { attrs: { "hide-controls": "", lazy: "" } },
-        _vm._l(_vm.news, function(item, i) {
-          return _c("v-carousel-item", { key: i, attrs: { src: item.src } })
-        })
-      ),
-      _vm._v(" "),
-      _c(
         "v-layout",
         { attrs: { column: "" } },
         [
