@@ -17,16 +17,10 @@ class ApiController extends Controller
     }
     public function getAlbum(Request $request){
         $table ='album';
-        $cates = DB::table('category')->get();
-        $res = [];
-        /*foreach ($cates as $k=>$cate){
-            $res[$k]['cate_name'] = $cate->cate_name;
-            $res[$k]['cate_key'] = $cate->cate_key;
-            $res[$k]['cate_id'] = $cate->id;
-            $albums = DB::table($table)->where('cate_id',$cate->id)->orderBy('id','desc')->paginate(10);
-            $res[$k]['albums'] = $this->_set_src($albums);
-        }*/
-        $res = DB::table($table)->orderBy('id','desc')->paginate(12);
+        $res = DB::table($table)->orderBy('id','desc')->paginate(12)->toArray();
+        foreach ($res['data'] as $k=>$v){
+            $res['data'][$k]->src = asset('images/'.$v->path);
+        }
         return $res;
     }
     public function getNewPhotos(){

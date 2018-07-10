@@ -46762,16 +46762,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     created: function created() {
-        this.getNewPhotos();
+        //this.getNewPhotos();
         this.getData();
         this.getCategory();
     },
+
     data: function data() {
         return {
             albums: [],
             news: [],
             cate: [],
-            drawer: false
+            drawer: false,
+            test_src: "/images/lyf.jpg",
+            pagination: {
+                page: 1,
+                total: 0,
+                perPage: 0,
+                visible: 7
+            }
         };
     },
 
@@ -46779,8 +46787,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         getData: function getData() {
             var self = this;
-            window.axios.get('/api/album').then(function (res) {
+            window.axios.get('/api/album?page=' + self.pagination.page).then(function (res) {
                 self.albums = res.data;
+                self.pagination.page = res.data.current_page;
+                self.pagination.total = res.data.last_page;
             });
         },
         getNewPhotos: function getNewPhotos() {
@@ -46794,8 +46804,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             window.axios.get('/api/cate').then(function (res) {
                 self.cate = res.data;
             });
+        },
+        next: function next() {
+            this.getData();
         }
-
     }
 });
 
@@ -46842,69 +46854,81 @@ var render = function() {
                   staticClass: "grey lighten-4",
                   attrs: { fluid: "", "grid-list-md": "" }
                 },
-                _vm._l(_vm.albums, function(cate, i) {
-                  return _c(
-                    "v-layout",
-                    { key: i, attrs: { row: "", wrap: "" } },
+                [
+                  _c(
+                    "v-container",
+                    { attrs: { fluid: "", "grid-list-sm": "" } },
                     [
-                      _c("v-subheader", [
-                        _c("h3", [_vm._v(_vm._s(cate.cate_name))])
-                      ]),
+                      _c(
+                        "v-layout",
+                        { attrs: { row: "", wrap: "" } },
+                        _vm._l(_vm.albums.data, function(album, j) {
+                          return _c(
+                            "v-flex",
+                            { key: j, attrs: { xs4: "" } },
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  attrs: {
+                                    to: {
+                                      name: "view",
+                                      params: { album_id: album.id }
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("img", {
+                                    directives: [
+                                      {
+                                        name: "lazy",
+                                        rawName: "v-lazy",
+                                        value: album.src,
+                                        expression: "album.src"
+                                      }
+                                    ],
+                                    staticClass: "image",
+                                    attrs: {
+                                      title: album.title,
+                                      alt: album.title,
+                                      width: "100%",
+                                      height: "100%"
+                                    }
+                                  })
+                                ]
+                              )
+                            ],
+                            1
+                          )
+                        })
+                      ),
                       _vm._v(" "),
                       _c(
-                        "v-container",
-                        { attrs: { fluid: "", "grid-list-sm": "" } },
+                        "div",
+                        { staticClass: "text-xs-center" },
                         [
-                          _c(
-                            "v-layout",
-                            { attrs: { row: "", wrap: "" } },
-                            _vm._l(cate.albums, function(album, j) {
-                              return _c(
-                                "v-flex",
-                                { key: j, attrs: { xs4: "" } },
-                                [
-                                  _c(
-                                    "router-link",
-                                    {
-                                      attrs: {
-                                        to: {
-                                          name: "view",
-                                          params: { album_id: album.id }
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _c("img", {
-                                        directives: [
-                                          {
-                                            name: "lazy",
-                                            rawName: "v-lazy",
-                                            value: album.src,
-                                            expression: "album.src"
-                                          }
-                                        ],
-                                        staticClass: "image",
-                                        attrs: {
-                                          title: album.title,
-                                          alt: album.title,
-                                          width: "100%",
-                                          height: "100%"
-                                        }
-                                      })
-                                    ]
-                                  )
-                                ],
-                                1
-                              )
-                            })
-                          )
+                          _c("v-pagination", {
+                            attrs: {
+                              length: _vm.pagination.total,
+                              "total-visible": _vm.pagination.visible
+                            },
+                            on: { input: _vm.next },
+                            model: {
+                              value: _vm.pagination.page,
+                              callback: function($$v) {
+                                _vm.$set(_vm.pagination, "page", $$v)
+                              },
+                              expression: "pagination.page"
+                            }
+                          })
                         ],
                         1
                       )
                     ],
                     1
                   )
-                })
+                ],
+                1
               )
             ],
             1
