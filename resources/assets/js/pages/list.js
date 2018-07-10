@@ -12,6 +12,7 @@ export default {
         this.getData();
         this.getCategory();
     },
+
     data() {
         return {
             albums:[],
