@@ -10,6 +10,7 @@ class ApiController extends Controller
     //
     protected $page = 20;
 
+
     public function getCategory(){
         $table ='category';
         $data = DB::table($table)->get();
