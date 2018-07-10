@@ -19,13 +19,14 @@ class ApiController extends Controller
         $table ='album';
         $cates = DB::table('category')->get();
         $res = [];
-        foreach ($cates as $k=>$cate){
+        /*foreach ($cates as $k=>$cate){
             $res[$k]['cate_name'] = $cate->cate_name;
             $res[$k]['cate_key'] = $cate->cate_key;
             $res[$k]['cate_id'] = $cate->id;
-            $albums = DB::table($table)->where('cate_id',$cate->id)->orderBy('id','desc')->limit(100)->get();
+            $albums = DB::table($table)->where('cate_id',$cate->id)->orderBy('id','desc')->paginate(10);
             $res[$k]['albums'] = $this->_set_src($albums);
-        }
+        }*/
+        $res = DB::table($table)->orderBy('id','desc')->paginate(12);
         return $res;
     }
     public function getNewPhotos(){

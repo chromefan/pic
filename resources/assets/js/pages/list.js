@@ -8,7 +8,7 @@ export default {
         console.log('tools页面 mounted.');
     },
     created : function () {
-        this.getNewPhotos();
+        //this.getNewPhotos();
         this.getData();
         this.getCategory();
     },
@@ -17,7 +17,14 @@ export default {
             albums:[],
             news: [],
             cate:[],
-            drawer: false
+            drawer: false,
+            test_src:"/images/lyf.jpg",
+            pagination: {
+                page: 1,
+                total: 0,
+                perPage: 0,
+                visible: 7
+            },
         }
     },
     components: {
@@ -25,8 +32,10 @@ export default {
     methods: {
         getData: function(){
             var  self = this;
-            window.axios.get('/api/album').then(function (res){
+            window.axios.get('/api/album?page='+self.pagination.page).then(function (res){
                 self.albums = res.data;
+                self.pagination.page = res.data.current_page;
+                self.pagination.total = res.data.last_page;
             });
         },
         getNewPhotos: function(){
@@ -41,6 +50,8 @@ export default {
                 self.cate = res.data;
             });
         },
-
+        next: function(){
+           this.getData();
+        },
     }
 }
