@@ -1,7 +1,7 @@
 import VueRouter from 'vue-router';
 import ViewIndex from './view-index.vue';
 import List from './list.vue';
-
+import Image from './image.vue';
 
 const routes = [
     {
@@ -43,11 +43,24 @@ const routes = [
                 }
             ]
         }
+    },
+    {
+        name: 'image',
+        path: '/image',
+        component: Image,
+        meta: {
+            breadcrumb: [
+                {
+                    name: '图表列表',
+                    href: '/image'
+                }
+            ]
+        }
     }
 ];
 
 const router = new VueRouter({
-    history: false,
+    history: true,
     routes
 });
 
